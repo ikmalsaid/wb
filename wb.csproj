@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{4F8B708A-38E1-4A59-86BC-DF01755F9871}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>wb</RootNamespace>
+    <AssemblyName>wb</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>assets\icons\wb.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <HighEntropyVA>true</HighEntropyVA>
+    <FileAlignment>512</FileAlignment>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(Platform)' == 'x86'">
+      <ItemGroup>
+        <Reference Include="CefSharp, Version=133.4.21.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+          <HintPath>packages\CefSharp.H264.x86\CefSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="CefSharp.Core, Version=133.4.21.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+          <HintPath>packages\CefSharp.H264.x86\CefSharp.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="CefSharp.WinForms, Version=133.4.21.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+          <HintPath>packages\CefSharp.H264.x86\CefSharp.WinForms.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="CefSharp, Version=133.4.21.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+          <HintPath>packages\CefSharp.H264.x64\CefSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="CefSharp.Core, Version=133.4.21.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=AMD64">
+          <HintPath>packages\CefSharp.H264.x64\CefSharp.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="CefSharp.WinForms, Version=133.4.21.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+          <HintPath>packages\CefSharp.H264.x64\CefSharp.WinForms.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialSkin.2\lib\net461\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Core -->
+    <Compile Include="src\Core\Program.cs" />
+    <Compile Include="src\Core\CrashpadHelper.cs" />
+    <Compile Include="src\Core\LogcatHelper.cs" />
+    <Compile Include="src\Core\MemoryUtils.cs" />
+    <Compile Include="src\Core\StorageHelper.cs" />
+    <Compile Include="src\Core\SqliteDatabase.cs" />
+    <Compile Include="src\Core\AppServices.cs" />
+    <Compile Include="src\Core\AppStrings.cs" />
+    <Compile Include="src\Core\SortMode.cs" />
+    <Compile Include="src\Core\ClipboardHelper.cs" />
+    <Compile Include="src\Core\CompressedStringHelper.cs" />
+    <Compile Include="src\Core\TitleHelper.cs" />
+    <Compile Include="src\Core\UrlHelper.cs" />
+    <Compile Include="src\Core\JsHelper.cs" />
+    <Compile Include="src\Core\WebDragDropHelper.cs" />
+
+    <!-- AdBlock -->
+    <Compile Include="src\AdBlock\AdBlockManager.cs" />
+    <Compile Include="src\AdBlock\CompiledRules.cs" />
+    <Compile Include="src\AdBlock\FilterSubscription.cs" />
+    <Compile Include="src\AdBlock\AdBlockYTShield.cs" />
+    <Compile Include="src\AdBlock\CustomFilterRule.cs" />
+    <Compile Include="src\AdBlock\DropperScriptlet.cs" />
+    <Compile Include="src\AdBlock\ElementPickerTarget.cs" />
+    <Compile Include="src\AdBlock\AdBlockSubscriptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\AdBlock\AdBlockWhitelistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\AdBlock\AdBlockManageFiltersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\AdBlock\BlockElementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+
+    <!-- SponsorBlock -->
+    <Compile Include="src\SponsorBlock\SponsorAction.cs" />
+    <Compile Include="src\SponsorBlock\SponsorCategory.cs" />
+    <Compile Include="src\SponsorBlock\SponsorSegment.cs" />
+    <Compile Include="src\SponsorBlock\SponsorBlockConfig.cs" />
+    <Compile Include="src\SponsorBlock\SponsorBlockStats.cs" />
+    <Compile Include="src\SponsorBlock\SponsorBlockManager.cs" />
+    <Compile Include="src\SponsorBlock\SponsorBlockYTShield.cs" />
+    <Compile Include="src\SponsorBlock\SponsorBlockSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\SponsorBlock\SponsorBlockWhitelistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+
+    <!-- Bookmarks -->
+    <Compile Include="src\Bookmarks\BookmarkItem.cs" />
+    <Compile Include="src\Bookmarks\BookmarkManager.cs" />
+    <Compile Include="src\Bookmarks\BookmarksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Bookmarks\BookmarksView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Bookmarks\BookmarkEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+
+    <!-- Data Portability (Import & Export) -->
+    <Compile Include="src\DataPortability\DataPortabilityModels.cs" />
+    <Compile Include="src\DataPortability\SqliteReader.cs" />
+    <Compile Include="src\DataPortability\HtmlBookmarkExporter.cs" />
+    <Compile Include="src\DataPortability\HtmlBookmarkImporter.cs" />
+    <Compile Include="src\DataPortability\HistoryExporter.cs" />
+    <Compile Include="src\DataPortability\ShortcutExporter.cs" />
+    <Compile Include="src\DataPortability\ChromiumDataImporter.cs" />
+    <Compile Include="src\DataPortability\FirefoxDataImporter.cs" />
+    <Compile Include="src\DataPortability\BrowserDetector.cs" />
+    <Compile Include="src\DataPortability\BrowserImportEngine.cs" />
+    <Compile Include="src\DataPortability\ImportDataView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\DataPortability\ExportDataView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\DataPortability\ImportDataDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\DataPortability\ExportDataDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+
+    <!-- Downloads -->
+    <Compile Include="src\Downloads\DownloadItemModel.cs" />
+    <Compile Include="src\Downloads\DownloadManager.cs" />
+    <Compile Include="src\Downloads\DownloadHandler.cs" />
+    <Compile Include="src\Downloads\DownloadBubblePopup.cs" />
+    <Compile Include="src\Downloads\DownloadsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Downloads\DownloadsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+
+    <!-- History -->
+    <Compile Include="src\History\HistoryItem.cs" />
+    <Compile Include="src\History\HistoryManager.cs" />
+    <Compile Include="src\History\HistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\History\HistoryView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+
+    <!-- Browser -->
+    <Compile Include="src\Browser\MainBrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Browser\BrowserTab.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Browser\PasskeyFallbackHelper.cs" />
+    <Compile Include="src\Browser\InternalPageHelper.cs" />
+    <Compile Include="src\Browser\ShortcutItem.cs" />
+    <Compile Include="src\Browser\ShortcutManager.cs" />
+    <Compile Include="src\Browser\AddShortcutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Browser\NewTabView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Browser\IncognitoNewTabView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Browser\ChromeTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Browser\SiteMuteManager.cs" />
+    <Compile Include="src\Browser\SourceViewerTemplate.cs" />
+    <Compile Include="src\Browser\ViewportScrollManager.cs" />
+
+    <!-- Clear Browsing Data -->
+    <Compile Include="src\Browser\ClearBrowsingData\ClearBrowsingDataTimeRange.cs" />
+    <Compile Include="src\Browser\ClearBrowsingData\ClearBrowsingDataOptions.cs" />
+    <Compile Include="src\Browser\ClearBrowsingData\ClearBrowsingDataResult.cs" />
+    <Compile Include="src\Browser\ClearBrowsingData\BrowsingDataCleaner.cs" />
+    <Compile Include="src\Browser\ClearBrowsingData\ClearBrowsingDataDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Browser\Handlers\BrowserKeyboardHandler.cs" />
+    <Compile Include="src\Browser\Handlers\BrowserPermissionHandler.cs" />
+    <Compile Include="src\Browser\Handlers\BrowserRequestHandler.cs" />
+    <Compile Include="src\Browser\Handlers\BrowserResourceRequestHandler.cs" />
+    <Compile Include="src\Browser\Handlers\CustomMenuHandler.cs" />
+    <Compile Include="src\Browser\Handlers\LifeSpanHandler.cs" />
+
+    <!-- Suggestions -->
+    <Compile Include="src\Browser\Suggestions\SuggestionItem.cs" />
+    <Compile Include="src\Browser\Suggestions\SuggestionService.cs" />
+    <Compile Include="src\Browser\Suggestions\SuggestionDropdownPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+
+    <!-- Proxy -->
+    <Compile Include="src\Proxy\ProxyMode.cs" />
+    <Compile Include="src\Proxy\ProxyConfig.cs" />
+    <Compile Include="src\Proxy\ProxyManager.cs" />
+    <Compile Include="src\Proxy\ProxySettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+
+    <!-- UI -->
+    <Compile Include="src\UI\WbBookmarksBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\UI\UITheme.cs" />
+    <Compile Include="src\UI\ThemeManager.cs" />
+    <Compile Include="src\UI\ExperimentalManager.cs" />
+    <Compile Include="src\UI\GoogleSecurityCodeBanner.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\UI\TopProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\UI\ToolbarConfig.cs" />
+    <Compile Include="src\UI\ToolStripDismissHook.cs" />
+    <Compile Include="src\UI\TabLoadingOverlay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\FullScreenExitOverlay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\OverlayPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\ScrollBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+
+    <!-- Screenshot -->
+    <Compile Include="src\Screenshot\ScreenshotSession.cs" />
+    <Compile Include="src\Screenshot\ScreenshotSessionManager.cs" />
+    <Compile Include="src\Screenshot\CdpScreenshotHelper.cs" />
+    <Compile Include="src\Screenshot\ScreenshotSelectionOverlayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Screenshot\ScreenshotCountdownOverlay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Screenshot\ScreenshotAnnotations.cs" />
+    <Compile Include="src\Screenshot\ScreenshotView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Screenshot\ScreenshotController.cs" />
+    <Compile Include="src\Screenshot\ScreenshotMenuHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>powershell -ExecutionPolicy Bypass -File "$(ProjectDir)build.ps1" -Platform $(PlatformName) -Configuration $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,25 @@
+# ikmalsaid's Carbon Install System Response File for csc.exe
+/target:winexe
+/optimize+
+/nologo
+/r:System.dll
+/r:System.Core.dll
+/r:System.Drawing.dll
+/r:System.Windows.Forms.dll
+/r:Microsoft.CSharp.dll
+/r:System.IO.Compression.dll
+/r:System.IO.Compression.FileSystem.dll
+/main:wb.Installer.Program
+
+# Source files
+Config\InstallerConfig.cs
+Core\InstalledAppInfo.cs
+Core\InstallerEngine.cs
+Graphics\SvgPathParser.cs
+Graphics\SetupIcons.cs
+UI\UITheme.cs
+UI\SetupWizardForm.cs
+UI\Controls\ActionChoiceCard.cs
+UI\Controls\BrandLogoControl.cs
+UI\Controls\CircularProgressSpinner.cs
+SetupWizard.cs
