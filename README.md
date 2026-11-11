@@ -5,7 +5,7 @@
 # wb browser
 
 [![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)](#getting-started)
-[![Tests](https://img.shields.io/badge/tests-223%20passed-success.svg)](#running-tests)
+[![Tests](https://img.shields.io/badge/tests-226%20passed-success.svg)](#running-tests)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%2F%2011%20%7C%20x64%20%7C%20x86-0078D6.svg)](#-prerequisites)
 [![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.6.2%2B-512BD4.svg)](#-prerequisites)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
